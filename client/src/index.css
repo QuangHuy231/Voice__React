@@ -24,8 +24,77 @@ p {
 
 button {
   background-color: -internal-light-dark(white, black);
-  padding: 1rem 10rem;
+  padding: 1rem 2rem;
   border-radius: 3rem;
   border: none;
   cursor: pointer;
+  width: 50%;
+}
+input {
+  text-align: center;
+  border: none;
+  background: unset;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 3rem;
+}
+.info-Container,
+.call-Container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid black;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+}
+.btn-Call {
+  align-self: center;
+  background-color: darkslategrey;
+  color: aliceblue;
+}
+.notifications-Container {
+  border: 2px solid rgb(203, 14, 14);
+  border-radius: 1rem;
+  margin: 2rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.notifications-Container h1 {
+  font-size: 5rem;
+  margin: 1rem;
+}
+.notifications-Container span {
+  font-size: 2rem;
+}
+.notifications-Container .btn-Answer {
+  background-color: darkcyan;
+  color: white;
+}
+.notifications-Container .btn-Deny {
+  background-color: crimson;
+  color: white;
+}
+.btn-Container {
+  display: flex;
+  gap: 1rem;
+}
+.audio-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: rgb(212, 203, 191);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.audio-Container .btn-HangUp {
+  background-color: rgb(228, 15, 15);
+  color: white;
 }

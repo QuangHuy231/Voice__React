@@ -20,8 +20,14 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   socket.emit("me", socket.id);
 
-  socket.on("disconnect", () => {
+  socket.on("disconnect", (data) => {
     socket.broadcast.emit("callEnded");
+  });
+  socket.on("leaveCall", () => {
+    socket.broadcast.emit("userLeave");
+  });
+  socket.on("Deny", () => {
+    socket.broadcast.emit("userDeny");
   });
 
   socket.on("callUser", ({ userToCall, signalData, from, name }) => {

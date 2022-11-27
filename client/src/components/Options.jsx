@@ -4,12 +4,12 @@ import { useContext } from "react";
 import { SocketContext } from "../Context";
 
 const Options = ({ children }) => {
-  const { name, setName, me, callAccepted, callEnded, leaveCall, callUser } =
+  const { name, setName, me, callAccepted, callEnded, callUser } =
     useContext(SocketContext);
   const [idToCall, setIdToCall] = useState("");
   return (
     <div>
-      <div>
+      <div className="info-Container">
         <h3>Account Info</h3>
         <input
           type="text"
@@ -22,7 +22,7 @@ const Options = ({ children }) => {
         <p>Your ID: {me}</p>
       </div>
 
-      <div>
+      <div className="call-Container">
         <h3>Make A Call</h3>
         <input
           type="text"
@@ -33,9 +33,11 @@ const Options = ({ children }) => {
           }}
         />
         {callAccepted && !callEnded ? (
-          <button onClick={leaveCall}>Hang up</button>
+          ""
         ) : (
-          <button onClick={() => callUser(idToCall)}>Call</button>
+          <button className="btn-Call" onClick={() => callUser(idToCall)}>
+            Call
+          </button>
         )}
       </div>
       {children}

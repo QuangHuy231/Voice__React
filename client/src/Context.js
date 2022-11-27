@@ -14,6 +14,7 @@ const ContextProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [call, setCall] = useState({});
   const [me, setMe] = useState("");
+  const [deny, setDeny] = useState(true);
 
   const myVideo = useRef();
   const userVideo = useRef();
@@ -41,6 +42,7 @@ const ContextProvider = ({ children }) => {
 
   const answerCall = () => {
     setCallAccepted(true);
+    setDeny(true);
 
     const peer = new Peer({ initiator: false, trickle: false, stream });
 
@@ -60,10 +62,13 @@ const ContextProvider = ({ children }) => {
     peer.signal(call.signal);
 
     connectionRef.current = peer;
+    socket.on("userLeave", () => {
+      window.location.reload();
+    });
   };
   const callDeny = () => {
-    setCallAccepted(false);
-    window.location.reload();
+    socket.emit("Deny");
+    setCall({});
   };
 
   const callUser = (id) => {
@@ -88,8 +93,12 @@ const ContextProvider = ({ children }) => {
 
     socket.on("callAccepted", (signal) => {
       setCallAccepted(true);
+      setDeny(true);
 
       peer.signal(signal);
+    });
+    socket.on("userDeny", () => {
+      setDeny(false);
     });
 
     connectionRef.current = peer;
@@ -97,6 +106,7 @@ const ContextProvider = ({ children }) => {
 
   const leaveCall = () => {
     setCallEnded(true);
+    socket.emit("leaveCall");
 
     connectionRef.current.destroy();
 
@@ -119,6 +129,7 @@ const ContextProvider = ({ children }) => {
         leaveCall,
         answerCall,
         callDeny,
+        deny,
       }}
     >
       {children}

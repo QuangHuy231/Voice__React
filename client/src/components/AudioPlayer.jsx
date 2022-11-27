@@ -1,15 +1,22 @@
 import React from "react";
+
 import { useContext } from "react";
 import { SocketContext } from "../Context";
 
 const AudioPlayer = () => {
-  const { callEnded, callAccepted, myVideo, userVideo } =
+  const { callEnded, leaveCall, callAccepted, myVideo, userVideo } =
     useContext(SocketContext);
+
   return (
     <div>
       <audio controls ref={myVideo} id="myAudio" muted hidden></audio>
       {callAccepted && !callEnded && (
-        <audio controls ref={userVideo} id="userAudio" muted></audio>
+        <div className="audio-Container">
+          <audio controls ref={userVideo} id="userAudio" muted></audio>
+          <button className="btn-HangUp" onClick={leaveCall}>
+            Hang up
+          </button>
+        </div>
       )}
     </div>
   );
