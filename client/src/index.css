@@ -50,7 +50,9 @@ input {
   border-radius: 1rem;
   padding: 1rem 1rem;
 }
-.btn-Call {
+
+.btn-Call,
+.btn-Copy {
   align-self: center;
   background-color: darkslategrey;
   color: aliceblue;

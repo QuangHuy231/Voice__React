@@ -12,7 +12,7 @@ const AudioPlayer = () => {
       <audio controls ref={myVideo} id="myAudio" muted hidden></audio>
       {callAccepted && !callEnded && (
         <div className="audio-Container">
-          <audio controls ref={userVideo} id="userAudio" muted></audio>
+          <audio controls ref={userVideo} id="userAudio"></audio>
           <button className="btn-HangUp" onClick={leaveCall}>
             Hang up
           </button>

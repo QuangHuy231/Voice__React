@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { SocketContext } from "../Context";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Options = ({ children }) => {
   const { name, setName, me, callAccepted, callEnded, callUser } =
@@ -20,6 +21,9 @@ const Options = ({ children }) => {
           }}
         />
         <p>Your ID: {me}</p>
+        <CopyToClipboard text={me} className="btn-Copy">
+          <button>Copy Your ID</button>
+        </CopyToClipboard>
       </div>
 
       <div className="call-Container">
