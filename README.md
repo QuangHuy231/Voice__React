@@ -1,13 +1,11 @@
 - Tải NODE
 - Bật Teminal trên VSCODE
-- nhập câu lệnh:
-  để chạy server
-  
+- Nhập câu lệnh:
+  npm install
+- Để chạy server:
   cd server
   npm start
-  
-  
-  để chạy react
-  
+- Để chạy react:
   cd client
   npm start
+
